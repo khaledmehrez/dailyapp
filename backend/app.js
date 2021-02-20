@@ -12,12 +12,13 @@ app.use(cors());
 //parse json file
 app.use(bodyParser.json());
 /*import routes*/
-//import from route
-
+// //import from route
+// const todoRoute = require('./routes/todoRoutes');
+// const Home = require('./routes/Home');
 // middelware
 
-
-
+// app.use('/todo', todoRoutes);
+// app.use('/', home)
 
 mongoose.connect("mongodb+srv://kaled:dailyapp@cluster0.s5o3n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log("connected to db")
