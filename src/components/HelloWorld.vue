@@ -21,7 +21,7 @@
       <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
       <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
     </ul>
-    <h3>Ecosystem</h3>
+    <h3>{{GetTodoList}}</h3>
     <ul>
       <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
       <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
@@ -31,24 +31,32 @@
     </ul>
   </div>
   <Button />
+  
 </template>
 
 <script>
-// import { useStore } from 'vuex'
-// import { computed } from 'vue'
+import { useStore } from 'vuex'
+import { computed } from 'vue'
+import { onMounted } from 'vue'
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
   setup () {
-    //  const store = useStore()
-    // return {
-    //   // access a state in computed function
-    //    getcurrentjoke: computed(() => store.getters. getcurrentjoke),
-    // }
+     const store = useStore()
+     onMounted(() => {
+      store.dispatch('fetchTodo')
+     })
+     return {
+       GetTodoList: computed(() => store.getters.GetTodoList)
+    
+       
+     }
     
   }
+  // ,
   
 }
 </script>
