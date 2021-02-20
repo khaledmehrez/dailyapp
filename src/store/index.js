@@ -10,7 +10,8 @@ export default createStore({
     fetchTodo: (state, payload) => (
       state.TodoList = payload
   ),
-  addTodo: (state, payload) => state.TodoList.push(payload)
+  addTodo: (state, payload) => state.TodoList.push(payload),
+  deleteTodo:(state, payload) => state.TodoList=state.TodoList.filter(el=>el.id!=payload),
   },
   actions: {
     async fetchTodo({commit}){
@@ -22,6 +23,11 @@ export default createStore({
       console.log(response)
       commit("addTodo", dataToAdd)
     },
+    async deleteTodo({commit}, id){
+      const response= await axios.delete(`http://localhost:3000/todo/${id}`);
+      console.log(response)
+      commit("deleteTodo", id)
+    }
   },
   modules: {
   },
