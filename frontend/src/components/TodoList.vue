@@ -1,8 +1,5 @@
 <template lang="">
-    <Field legend="Godfather I" :toggleable="true">
-	<h1>{{Title}}</h1>
-    <p>{{Description}}</p>
-</Field>
+   
 </template>
 <script>
 export default {
