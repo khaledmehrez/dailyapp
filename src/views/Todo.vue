@@ -1,10 +1,14 @@
 <template>
   <div class="hello">
     <span class="p-float-label">
-	<Input id="username" type="text" v-model="value" />
-  <Button>Add</Button>
-  
-<TodoList v-for=" GetTodoList in  GetTodoList" :key="GetTodoList.id" :Title="GetTodoList.title" :Description="GetTodoList.description" />
+	<Input id="username" type="text" v-model="title" required />
+  <p>{{title}}</p>
+  <Button @click="onSubmit">Add</Button>
+   <Field  v-for=" GetTodoList in  GetTodoList" :key="GetTodoList.id" legend="Godfather I" :toggleable="true">
+	<h3>{{GetTodoList.title}}</h3>
+    <p>{{GetTodoList.time}}</p>
+</Field>
+
   
   
 </span>
@@ -13,24 +17,33 @@
 </template>
 
 <script>
+
 import { useStore } from 'vuex'
 import { computed } from 'vue'
 import { onMounted } from 'vue'
-import TodoList from '../components/TodoList'
+import { ref } from "vue";
 export default {
   name: 'Todo',
   components: {
-   TodoList
+  
   },
  
   setup () {
+    let title = ref("");
+    function onSubmit() {
+      // submit to backend or whatever you like
+     store.dispatch('addTodo',{"title":title.value,"time":new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()})
+    }
      const store = useStore()
      onMounted(() => {
       store.dispatch('fetchTodo')
      })
+    //  store.dispatch(' addTodo',{title:value,Description: "oejfope"})
+
      return {
-       GetTodoList: computed(() => store.getters.GetTodoList)
-    
+       GetTodoList: computed(() => store.getters.GetTodoList),
+       onSubmit,
+       title
        
      }
     
@@ -38,6 +51,7 @@ export default {
   // ,
   
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
