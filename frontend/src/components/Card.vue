@@ -1,4 +1,5 @@
 <template lang="">
+<div >
    <div class="my-2 mx-auto p-relative bg-white shadow-1 blue-hover" style="width: 360px; overflow: hidden; border-radius: 1px;">
         <img :src="GetNewsList.urlToImage" alt="Man with backpack"    
             class="d-block w-full"/>
@@ -26,7 +27,7 @@
 
 </div>
 
-
+</div>
 </template>
 <script>
 export default {

@@ -24,26 +24,11 @@ export default {
                   
                 },
                 {
-                   label:'News',to:'/about'
+                   label:'News',to:'/news'
                    
                 
-                },
-                {
-                   label:'health',
-                  
-                },
-                {
-                   label:'science',
-                  
-                },
-                  {
-                   label:'sports',
-                  
-                },
-                  {
-                   label:'technology',
-                  
                 }
+                
              ]
 
     return {items}
