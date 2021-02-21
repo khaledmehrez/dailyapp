@@ -1,17 +1,17 @@
-// const express = require('express');
+const express = require('express');
 
-// const { getTodo, postTodo,deleteTodo,patchTodo} = require('../controllers/contTodos')
-// const router = express.Router();
-
-
-// router.get('/geTodo', getTodo)
-
-// router.post('/postTodo', postTodo)
-
-// router.delete('/deleteTodo/:tId',deleteTodo)
-// router.patch('/patchTodo/:tId',patchTodo)
+const { getTodo, postTodo,deleteTodo,patchTodo} = require('../controllers/contTodo')
+const router = express.Router();
 
 
+router.get('/getTodo', getTodo)
+
+router.post('/postTodo', postTodo)
+
+router.delete('/deleteTodo/:id',deleteTodo)
+router.patch('/patchTodo/:id',patchTodo)
 
 
-// module.exports = router;
+
+
+module.exports = router;

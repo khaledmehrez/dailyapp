@@ -11,16 +11,19 @@ const path = require('path');
 app.use(cors());
 //parse json file
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
 /*import routes*/
 // //import from route
-// const todoRoute = require('./routes/todoRoutes');
-// const Home = require('./routes/Home');
+const todoRoute = require('./routes/todoRoutes');
+const home = require('./routes/Home');
 // middelware
 
-// app.use('/todo', todoRoutes);
-// app.use('/', home)
+app.use('/todo', todoRoute);
+app.use('/', home)
 
-mongoose.connect("mongodb+srv://kaled:dailyapp@cluster0.s5o3n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongoose.connect("mongodb+srv://kaled:dailyapp@cluster0.s5o3n.mongodb.net/dbDailyapp?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log("connected to db")
 })
 //listen

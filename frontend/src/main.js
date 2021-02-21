@@ -18,7 +18,10 @@ import Menubar from 'primevue/menubar';
 import InputText from 'primevue/inputtext';
 //field
 import Fieldset from 'primevue/fieldset';
-
+//loader
+import ProgressSpinner from 'primevue/progressspinner';
+//messageError
+import Message from 'primevue/message';
 const app = createApp(App);
 app.use(router)
 app.use(PrimeVue);
@@ -27,4 +30,6 @@ app.component('Button',Button)
 app.component('Navbar', Menubar);
 app.component('Input',InputText)
 app.component('Field',Fieldset)
+app.component('Spinner',ProgressSpinner)
+app.component('MessageError',Message)
 app.mount('#app')
