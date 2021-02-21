@@ -1,13 +1,18 @@
 <template>
+
 <div>
+   <img class="pictureTodo" src="../assets/LandingTodo.png">
+  
 <Spinner v-if="GetRequest" />
 <MessageError v-if="GetError" severity="warn" sticky  >{{GetErrorMessage}}</MessageError>
-  <div v-if="!GetRequest && !GetError" class="hello">
-    <span class="p-float-label">
+  <div v-if="!GetRequest && !GetError" >
+    <div class="p-d-inline p-shadow-1 inputSection" >
+    
 	<Input id="username" type="text" v-model="title" required />
   
   <Button type="button"  @click="onSubmit">Add</Button>
-   <Field   v-for=" (GetTodoList,index) in  GetTodoList" v-bind:key="index" legend="your todo" :toggleable="true">
+    </div>
+   <Field class="field"  v-for=" (GetTodoList,index) in  GetTodoList" v-bind:key="index" legend="your todo" :toggleable="true">
 
 	<h3 v-if="!toggle">{{GetTodoList.title}}</h3>
   <Input v-if="toggle && GetTodoList._id===idEdit" v-model="EditedTitel"/>
@@ -21,7 +26,7 @@
 
   
   
-</span>
+
 <p>{{EditedTitel}}</p>
   </div>
 </div>
@@ -95,5 +100,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
-
+.inputSection{
+  margin-left: 40%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+ 
+  
+}
+ .field{
+    width:50%;
+    margin-left:20%
+  }
+  .pictureTodo{
+    height: 80vh;
+    width: 100%;
+  }
 </style>
